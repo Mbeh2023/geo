@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+    tools{
+        maven 'M2_HOME'
+    }
+    stages{
+        stage('clean'){
+            steps{
+                sh 'mvn clean'
+            }
+        }
+        stage('install'){
+            steps{
+                sh 'mvn install'
+            }
+        }
+        stage('package'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+        stage('artifact'){
+             steps{
+                sh 'curl -uadmin:APSHbJSRsfadV4eryipgsCdgtv -T target/bio*.jar "http://18.214.89.170:8081/artifactory/steph-artifact/geoapp"'
+             }
+        }
+       
+    }
+}
