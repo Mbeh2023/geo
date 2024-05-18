@@ -19,7 +19,7 @@ pipeline{
                 sh 'mvn package'
             }
         }
-        stage('artifact'){
+        stage('artifacts'){
              steps{
                 sh 'curl -uadmin:APSHbJSRsfadV4eryipgsCdgtv -T target/bio*.jar "http://18.214.89.170:8081/artifactory/steph-artifact/geoapp"'
              }
